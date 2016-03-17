@@ -66,6 +66,7 @@
     <Compile Include="Common\Entities\ClientModificationBase.cs" />
     <Compile Include="Common\Notification\NotificationsBase.cs" />
     <Compile Include="Common\SharedCommandName.cs" />
+    <Compile Include="Semaphore.cs" />
     <Compile Include="Server\CommandName.cs" />
     <Compile Include="CommandHandling\CommandParameter.cs" />
     <Compile Include="CommandHandling\CommandParameterBlock.cs" />

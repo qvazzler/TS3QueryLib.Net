@@ -12,6 +12,9 @@ namespace TS3QueryLib.Core.Common
         /// The dispatcher used to send commands
         /// </summary>
         public IQueryDispatcher Dispatcher { get; protected set; }
+
+        public Semaphore semaphore = new Semaphore();
+
         /// <summary>
         /// Returns true if this instance was disposed
         /// </summary>
@@ -67,12 +70,25 @@ namespace TS3QueryLib.Core.Common
         /// <param name="command">The command to send</param>
         public string SendCommand(Command command)
         {
-            CheckForDisposed();
+            try
+            {
+                semaphore.WaitOne();
 
-            if (command == null)
-                throw new ArgumentNullException("command");
+                CheckForDisposed();
 
-            return Dispatcher.Dispatch(command);
+                if (command == null)
+                    throw new ArgumentNullException("command");
+
+                return Dispatcher.Dispatch(command);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                semaphore.Release();
+            }
         }
 
         /// <summary>
@@ -81,12 +97,24 @@ namespace TS3QueryLib.Core.Common
         /// <param name="rawCommand">The raw messag</param>
         public string SendRaw(string rawCommand)
         {
-            CheckForDisposed();
+            try
+            {
+                semaphore.WaitOne();
+                CheckForDisposed();
 
-            if (rawCommand == null)
-                throw new ArgumentNullException("rawCommand");
+                if (rawCommand == null)
+                    throw new ArgumentNullException("rawCommand");
 
-            return Dispatcher.Dispatch(rawCommand);
+                return Dispatcher.Dispatch(rawCommand);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                semaphore.Release();
+            }
         }
 
         #endregion

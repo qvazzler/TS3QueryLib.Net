@@ -459,6 +459,7 @@
     <Compile Include="..\TS3QueryLib.Core.Silverlight\TypeExtensions\ExtensionMethods.cs">
       <Link>TypeExtensions\ExtensionMethods.cs</Link>
     </Compile>
+    <Compile Include="Semaphore.cs" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Client.3.5">

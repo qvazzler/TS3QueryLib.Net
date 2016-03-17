@@ -101,8 +101,8 @@ namespace TS3QueryLib.Core.Server.Notification
                 { "notifycliententerview", HandleClientJoin },
                 { "notifytokenused", HandleTokenUsed },
                 { "notifychannelcreated", HandleChannelCreation },
-                { "notifychannelcreated", HandleChannelEdited },
-                { "notifychannelcreated", HandleChannelMoved },
+                { "notifychanneledited", HandleChannelEdited },
+                { "notifychannelmoved", HandleChannelMoved },
             };
         }
 

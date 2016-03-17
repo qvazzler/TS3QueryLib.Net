@@ -111,6 +111,20 @@ namespace TS3QueryLib.Core.CommandHandling
             return CommandParameterGroup.ConvertValue<T>(parameterName, parameterValue);
         }
 
+        public T GetParameterValue<T>(string parameterName, T defReturn)
+        {
+            try
+            {
+                string parameterValue = GetParameterValue(parameterName, null);
+
+                return CommandParameterGroup.ConvertValue<T>(parameterName, parameterValue);
+            }
+            catch (Exception)
+            {
+                return defReturn;
+            }
+        }
+
         public string GetParameterValue(string parameterName, string defaultValue)
         {
             CommandParameter parameter = GetParameter(parameterName);

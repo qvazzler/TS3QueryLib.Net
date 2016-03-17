@@ -63,6 +63,21 @@ namespace TS3QueryLib.Core.Server.Notification
         /// </summary>
         public event EventHandler<TokenUsedEventArgs> TokenUsed;
 
+        /// <summary>
+        /// Raised, when a channel is created
+        /// </summary>
+        public event EventHandler<ChannelCreatedEventArgs> ChannelCreated;
+
+        /// <summary>
+        /// Raised, when a channel is edited
+        /// </summary>
+        public event EventHandler<ChannelEditedEventArgs> ChannelEdited;
+
+        /// <summary>
+        /// Raised, when a channel is moved
+        /// </summary>
+        public event EventHandler<ChannelMovedEventArgs> ChannelMoved;
+
         #endregion
 
         #region Constructor
@@ -85,7 +100,28 @@ namespace TS3QueryLib.Core.Server.Notification
                 { "notifyclientmoved", HandleClientMove },
                 { "notifycliententerview", HandleClientJoin },
                 { "notifytokenused", HandleTokenUsed },
+                { "notifychannelcreated", HandleChannelCreation },
+                { "notifychannelcreated", HandleChannelEdited },
+                { "notifychannelcreated", HandleChannelMoved },
             };
+        }
+
+        private void HandleChannelCreation(CommandParameterGroupList parameterGroupList)
+        {
+            if (ChannelCreated != null)
+                ThreadPool.QueueUserWorkItem(x => ChannelCreated(this, new ChannelCreatedEventArgs(parameterGroupList)), null);
+        }
+
+        private void HandleChannelEdited(CommandParameterGroupList parameterGroupList)
+        {
+            if (ChannelEdited != null)
+                ThreadPool.QueueUserWorkItem(x => ChannelEdited(this, new ChannelEditedEventArgs(parameterGroupList)), null);
+        }
+
+        private void HandleChannelMoved(CommandParameterGroupList parameterGroupList)
+        {
+            if (ChannelMoved != null)
+                ThreadPool.QueueUserWorkItem(x => ChannelMoved(this, new ChannelMovedEventArgs(parameterGroupList)), null);
         }
 
         private void HandleTokenUsed(CommandParameterGroupList parameterGroupList)

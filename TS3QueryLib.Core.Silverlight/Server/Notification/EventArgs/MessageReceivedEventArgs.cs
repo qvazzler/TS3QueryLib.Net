@@ -17,7 +17,7 @@ namespace TS3QueryLib.Core.Server.Notification.EventArgs
 
         #region Constructor
 
-        internal MessageReceivedEventArgs(CommandParameterGroupList commandParameterGroupList)
+        public MessageReceivedEventArgs(CommandParameterGroupList commandParameterGroupList)
         {
             if (commandParameterGroupList == null)
                 throw new ArgumentNullException("commandParameterGroupList");

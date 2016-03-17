@@ -13,7 +13,7 @@ namespace TS3QueryLib.Core.Server.Notification.EventArgs
 
         #endregion
 
-        internal ClientMovedEventArgs(CommandParameterGroupList commandParameterGroupList)
+        public ClientMovedEventArgs(CommandParameterGroupList commandParameterGroupList)
         {
             if (commandParameterGroupList == null)
                 throw new ArgumentNullException("commandParameterGroupList");

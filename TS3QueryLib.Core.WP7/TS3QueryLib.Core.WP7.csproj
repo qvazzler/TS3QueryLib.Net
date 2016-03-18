@@ -141,6 +141,9 @@
     <Compile Include="..\TS3QueryLib.Core.Silverlight\Common\ChannelTreeItem.cs">
       <Link>Common\ChannelTreeItem.cs</Link>
     </Compile>
+    <Compile Include="..\TS3QueryLib.Core.Silverlight\Common\DoubleEventManager.cs">
+      <Link>Common\DoubleEventManager.cs</Link>
+    </Compile>
     <Compile Include="..\TS3QueryLib.Core.Silverlight\Common\Entities\ChannelListEntryBase.cs">
       <Link>Common\Entities\ChannelListEntryBase.cs</Link>
     </Compile>
@@ -230,6 +233,9 @@
     </Compile>
     <Compile Include="..\TS3QueryLib.Core.Silverlight\Communication\SocketErrorEventArgs.cs">
       <Link>Communication\SocketErrorEventArgs.cs</Link>
+    </Compile>
+    <Compile Include="..\TS3QueryLib.Core.Silverlight\SemaphoreEx.cs">
+      <Link>SemaphoreEx.cs</Link>
     </Compile>
     <Compile Include="..\TS3QueryLib.Core.Silverlight\Server\CommandName.cs">
       <Link>Server\CommandName.cs</Link>
@@ -468,7 +474,6 @@
     <Compile Include="..\TS3QueryLib.Core.Silverlight\TypeExtensions\ExtensionMethods.cs">
       <Link>TypeExtensions\ExtensionMethods.cs</Link>
     </Compile>
-    <Compile Include="Semaphore.cs" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Client.3.5">

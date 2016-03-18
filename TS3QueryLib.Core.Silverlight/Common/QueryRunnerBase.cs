@@ -13,7 +13,9 @@ namespace TS3QueryLib.Core.Common
         /// </summary>
         public IQueryDispatcher Dispatcher { get; protected set; }
 
-        public Semaphore semaphore = new Semaphore();
+        public SemaphoreEx semaphoreCommands = new SemaphoreEx();
+        public SemaphoreEx semaphoreEvents = new SemaphoreEx();
+        DoubleEventManager doubleEventManager = new DoubleEventManager();
 
         /// <summary>
         /// Returns true if this instance was disposed
@@ -72,7 +74,7 @@ namespace TS3QueryLib.Core.Common
         {
             try
             {
-                semaphore.WaitOne();
+                semaphoreCommands.WaitOne();
 
                 CheckForDisposed();
 
@@ -87,7 +89,7 @@ namespace TS3QueryLib.Core.Common
             }
             finally
             {
-                semaphore.Release();
+                semaphoreCommands.Release();
             }
         }
 
@@ -99,7 +101,7 @@ namespace TS3QueryLib.Core.Common
         {
             try
             {
-                semaphore.WaitOne();
+                semaphoreCommands.WaitOne();
                 CheckForDisposed();
 
                 if (rawCommand == null)
@@ -113,7 +115,7 @@ namespace TS3QueryLib.Core.Common
             }
             finally
             {
-                semaphore.Release();
+                semaphoreCommands.Release();
             }
         }
 

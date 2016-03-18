@@ -169,6 +169,7 @@ namespace TS3QueryLib.Core
             return Regex.IsMatch(responseText, pattern, RegexOptions.Singleline);
         }
 
+
         protected void OnNotificationReceived(object notificationText)
         {
             if (NotificationReceived != null)

@@ -62,11 +62,12 @@
     <Compile Include="Client\Responses\ChannelConnectionInfoResponse.cs" />
     <Compile Include="Client\Responses\WhoAmIResponse.cs" />
     <Compile Include="CommandHandling\Command.cs" />
+    <Compile Include="Common\DoubleEventManager.cs" />
     <Compile Include="Common\Entities\ChannelListEntryBase.cs" />
     <Compile Include="Common\Entities\ClientModificationBase.cs" />
     <Compile Include="Common\Notification\NotificationsBase.cs" />
     <Compile Include="Common\SharedCommandName.cs" />
-    <Compile Include="Semaphore.cs" />
+    <Compile Include="SemaphoreEx.cs" />
     <Compile Include="Server\CommandName.cs" />
     <Compile Include="CommandHandling\CommandParameter.cs" />
     <Compile Include="CommandHandling\CommandParameterBlock.cs" />

@@ -6,13 +6,13 @@ using System.Threading;
 
 namespace TS3QueryLib.Core
 {
-    public class Semaphore
+    public class SemaphoreEx
     {
         private object Mutex { get; set; }
         private int Count { get; set; }
         private int Max { get; set; }
 
-        public Semaphore(int max = 1)
+        public SemaphoreEx(int max = 1)
         {
             Mutex = new object();
             Max = max;

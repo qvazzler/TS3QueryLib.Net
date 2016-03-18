@@ -30,6 +30,8 @@ namespace TS3QueryLib.Core
         private StringBuilder _receiveRepository;
         private bool _greetingReceived;
 
+        private DoubleEventManager doubleEventManager = new DoubleEventManager();
+
         #endregion
 
         #region Events
@@ -215,7 +217,10 @@ namespace TS3QueryLib.Core
 
                         if (notifyMatch.Success)
                         {
+                            if (doubleEventManager.IsFirst(notifyMatch.Value))
+                            {
                             ThreadPool.QueueUserWorkItem(OnNotificationReceived, notifyMatch.Value);
+                            }
 
                             _receiveRepository.Remove(0, notifyMatch.Length);
 
@@ -223,6 +228,7 @@ namespace TS3QueryLib.Core
                                 break;
 
                             continue;
+
                         }
 
                         Match statusLineMatch = StatusLineMatch(_receiveRepository.ToString());

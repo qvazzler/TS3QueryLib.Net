@@ -13,9 +13,9 @@ namespace TS3QueryLib.Core.Common
         /// </summary>
         public IQueryDispatcher Dispatcher { get; protected set; }
 
-        public SemaphoreEx semaphoreCommands = new SemaphoreEx();
-        public SemaphoreEx semaphoreEvents = new SemaphoreEx();
-        DoubleEventManager doubleEventManager = new DoubleEventManager();
+        //Adding some semaphores for testing purposes
+        private SemaphoreEx semaphoreCommands = new SemaphoreEx();
+        private SemaphoreEx semaphoreEvents = new SemaphoreEx();
 
         /// <summary>
         /// Returns true if this instance was disposed

@@ -50,6 +50,19 @@ namespace TS3QueryLib.Core.CommandHandling
             }
         }
 
+        public Command(CommandParameterGroupList commandWithParams)
+        {
+            if (commandWithParams == null)
+                throw new ArgumentException("commandWithParams is null or emtpy", "commandWithParams");
+
+            Name = commandWithParams[0][0].Name;
+
+            commandWithParams.ForEach(cmdWithParam => cmdWithParam.RemoveAt(0));
+
+            ParameterGroups = commandWithParams;
+            Options = new List<string>();
+        }
+
         #endregion
 
         #region Public Methods
@@ -126,14 +139,25 @@ namespace TS3QueryLib.Core.CommandHandling
 
         public override string ToString()
         {
+            return ToString(false);
+        }
+
+        public string ToString(bool appendDash)
+        {
+            //Legacy code appended dashes for Options array.. Leaving flexible functionality in just in case.
+            string extraChars = "";
+
+            if (appendDash)
+                extraChars = "-";
+
             StringBuilder result = new StringBuilder();
             result.Append(Name.ToLower());
 
             if (ParameterGroups.Count > 0)
-                result.AppendFormat(" {0}", ParameterGroups);
+                result.AppendFormat(" {0}{1}", extraChars, ParameterGroups);
 
             if (Options.Count > 0)
-                result.AppendFormat(" -{0}", string.Join(" -", Options.Select(o => o.ToString()).ToArray()));
+                result.AppendFormat(" {0]{1}", extraChars, string.Join(" -", Options.Select(o => o.ToString()).ToArray()));
 
             return result.ToString();
         }

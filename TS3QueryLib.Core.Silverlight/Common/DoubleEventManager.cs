@@ -23,14 +23,16 @@ namespace TS3QueryLib.Core.Common
 
         public bool IsFirst(string eventValue, bool tidyEvents = true)
         {
-            //if (eventDumpStrings.Count(item => String.Join(" ", item) == String.Join(" ", eventDumpString)) == 2)
+            if (tidyEvents)
+                TidyEvents();
+
             eventDumpStrings.Add(new DoubleEvent(eventValue));
             if (eventDumpStrings.Count(item => item.Value == eventValue) == 2)
             {
                 eventDumpStrings.RemoveAll(item => item.Value == eventValue);
                 return false;
             }
-            if (tidyEvents && eventDumpStrings.Count(item => item.Value == eventValue && item.Added.CompareTo(DateTime.Now) < -10) == 1)
+            if (eventDumpStrings.Count(item => item.Value == eventValue && item.Added.CompareTo(DateTime.Now) < -1) == 1)
             {
                 eventDumpStrings.RemoveAll(item => item.Value == eventValue);
                 return false;
@@ -39,6 +41,12 @@ namespace TS3QueryLib.Core.Common
             {
                 return true;
             }
+        }
+
+        public void TidyEvents(TimeSpan? threshold = null)
+        {
+            if (threshold == null) { threshold = TimeSpan.FromMilliseconds(500); }
+            eventDumpStrings.RemoveAll(e => (DateTime.Now - e.Added) > threshold);
         }
     }
 }

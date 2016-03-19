@@ -11,7 +11,7 @@ namespace TS3QueryLib.Core.CommandHandling
 
         public string Name { get; protected set; }
         protected List<string> Options { get; set; }
-        protected CommandParameterGroupList ParameterGroups { get; set; }
+        protected CommandParameterGroup ParameterGroups { get; set; }
 
         #endregion
 
@@ -38,7 +38,7 @@ namespace TS3QueryLib.Core.CommandHandling
                 throw new ArgumentException("commandName is null or emtpy", "commandName");
 
             Name = commandName;
-            ParameterGroups = new CommandParameterGroupList();
+            ParameterGroups = new CommandParameterGroup();
             Options = new List<string>();
 
             if (options != null && options.Length > 0)
@@ -50,14 +50,14 @@ namespace TS3QueryLib.Core.CommandHandling
             }
         }
 
-        public Command(CommandParameterGroupList commandWithParams)
+        public Command(CommandParameterGroup commandWithParams)
         {
             if (commandWithParams == null)
                 throw new ArgumentException("commandWithParams is null or emtpy", "commandWithParams");
 
-            Name = commandWithParams[0][0].Name;
+            Name = commandWithParams[0].Name.ToLower();
 
-            commandWithParams.ForEach(cmdWithParam => cmdWithParam.RemoveAt(0));
+            commandWithParams.RemoveAt(0);
 
             ParameterGroups = commandWithParams;
             Options = new List<string>();
@@ -69,17 +69,18 @@ namespace TS3QueryLib.Core.CommandHandling
 
         public void AddParameter(string parameterName)
         {
-            ParameterGroups.AddParameter(parameterName, null, 0);
+            ParameterGroups.Add(new CommandParameter(parameterName));
         }
 
         public void AddParameter(string parameterName, string parameterValue)
         {
-            ParameterGroups.AddParameter(parameterName, parameterValue, 0);
+            //ParameterGroups.AddParameter(parameterName, parameterValue, 0);
+            ParameterGroups.Add(new CommandParameter(parameterName, parameterValue));
         }
 
         public void AddParameter(string parameterName, string parameterValue, uint? groupIndex)
         {
-            ParameterGroups.AddParameter(parameterName, parameterValue, groupIndex ?? 0);
+            //ParameterGroups.AddParameter(parameterName, parameterValue, groupIndex ?? 0);
         }
 
         public void AddParameter(string parameterName, int parameterValue)

@@ -80,7 +80,7 @@ namespace TS3QueryLib.Core.CommandHandling
 
         public void AddParameter(string parameterName, string parameterValue, uint? groupIndex)
         {
-            //ParameterGroups.AddParameter(parameterName, parameterValue, groupIndex ?? 0);
+            ParameterGroups.Add(new CommandParameter(parameterName, parameterValue));
         }
 
         public void AddParameter(string parameterName, int parameterValue)

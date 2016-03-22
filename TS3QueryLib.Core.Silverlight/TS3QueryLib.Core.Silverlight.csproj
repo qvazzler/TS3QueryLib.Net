@@ -154,6 +154,7 @@
     <Compile Include="Server\Responses\InitializeFileUploadResponse.cs" />
     <Compile Include="Server\Responses\OwnPermissionResponse.cs" />
     <Compile Include="SyncFileTransfer.cs" />
+    <Compile Include="SynchronizationCallback.cs" />
     <Compile Include="SyncTcpDispatcher.cs" />
     <Compile Include="Server\Responses\ChannelInfoResponse.cs" />
     <Compile Include="Server\Responses\ClientGetNameFromDbIdResponse.cs" />

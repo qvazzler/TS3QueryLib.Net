@@ -39,6 +39,11 @@ namespace TS3QueryLib.Core.CommandHandling
             return Value == null ? EncodedName : string.Format("{0}={1}", Name, EncodedValue);
         }
 
+        public static implicit operator CommandParameter(bool v)
+        {
+            throw new NotImplementedException();
+        }
+
         #endregion
     }
 }

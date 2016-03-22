@@ -431,6 +431,9 @@
     <Compile Include="..\TS3QueryLib.Core.Silverlight\SyncFileTransfer.cs">
       <Link>SyncFileTransfer.cs</Link>
     </Compile>
+    <Compile Include="..\TS3QueryLib.Core.Silverlight\SynchronizationCallback.cs">
+      <Link>SynchronizationCallback.cs</Link>
+    </Compile>
     <Compile Include="..\TS3QueryLib.Core.Silverlight\SyncTcpDispatcher.cs">
       <Link>SyncTcpDispatcher.cs</Link>
     </Compile>

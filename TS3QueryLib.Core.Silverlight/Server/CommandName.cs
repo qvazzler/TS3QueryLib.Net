@@ -119,7 +119,13 @@ namespace TS3QueryLib.Core.Server
         FtCreateDir,
         FtRenameFile,
         CustomSearch,
-        CustomInfo
+        CustomInfo,
+        ClientUpdate,
+        Quit,
+        ServerGroupAutoAddPerm,
+        ServerGroupAutoDelPerm,
+        Use,
+        WhoAmI
     }
 
     public static class CommandNameExtensions

@@ -50,6 +50,17 @@ namespace TS3QueryLib.Core.CommandHandling
             }
         }
 
+        public Command(string Name, CommandParameterGroup commandWithParams)
+        {
+            if (commandWithParams == null)
+                throw new ArgumentException("commandWithParams is null or emtpy", "commandWithParams");
+
+            this.Name = Name;
+
+            ParameterGroups = commandWithParams;
+            Options = new List<string>();
+        }
+
         public Command(CommandParameterGroup commandWithParams)
         {
             if (commandWithParams == null)
